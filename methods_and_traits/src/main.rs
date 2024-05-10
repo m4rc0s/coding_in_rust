@@ -1,32 +1,39 @@
-use std::fmt::format;
+use std::fmt::Display;
 
+pub trait Logger {
+    /// Log a message at the given verbosity level.
+    fn log(&self, verbosity: u8, message: impl Display);
+}
 
-trait Pet {
-    fn talk(&self) -> String;
-    fn greet(&self) {
-        println!("Oh you're a cutie Papagaio! What's your name? {}", self.talk());
+struct StderrLogger;
+
+impl Logger for StderrLogger {
+    fn log(&self, verbosity: u8, message: impl Display) {
+        eprintln!("verbosity={verbosity}: {message}");
     }
 }
 
-#[derive(Debug)]
-struct Papagaio {
-    name: String,
-    age: u8,
+fn do_things(logger: &impl Logger) {
+    logger.log(5, "FYI");
+    logger.log(2, "Uhoh");
+    logger.log(7, "Not necessary");
 }
 
-impl Pet for Papagaio {
-    fn talk(&self) -> String {
-        format!("\nPapagaio! Papagaio! Papagaio! My name is {}!", self.name)
+/// Only log messages up to the given verbosity level.
+struct VerbosityFilter {
+    max_verbosity: u8,
+    inner: StderrLogger,
+}
+
+impl Logger for VerbosityFilter {
+    fn log(&self, verbosity: u8, message: impl Display) {
+        if verbosity <= self.max_verbosity {
+            self.inner.log(verbosity, message);
+        }
     }
 }
 
 fn main() {
-
-    let loro = Papagaio {
-        name: "Loro".to_string(),
-        age: 2
-    };
-
-    loro.greet();
-
+    let l = VerbosityFilter { max_verbosity: 5, inner: StderrLogger };
+    do_things(&l);
 }
