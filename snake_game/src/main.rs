@@ -227,8 +227,8 @@ fn eating(
     seg_trans_query: Query<&Transform, With<SnakeHead>>,
     fruit_trans_query: Query<(Entity, &Transform), With<Apple>>,
 ) {
-    const COLLISION_SPREAD: f32 = 16.0;
-    let segment_transform = seg_trans_query.iter().next().unwrap();
+    const COLLISION_SPREAD: f32 = 122.0;
+    let segment_transform: &Transform = seg_trans_query.iter().next().unwrap();
     let (fruit, fruit_transform) = fruit_trans_query.iter().next().unwrap();
     let color = Color::YELLOW_GREEN;
     let mut rng = rand::thread_rng();

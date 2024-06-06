@@ -3,7 +3,7 @@ resolver = "2"
 
 members = [
     "collatz_sequence", "elevator_events", "expression_evaluation",
-    "fibonacci", "methods_and_traits",
-    "nested_arrays",
+    "fibonacci", "generics", "memory_management", "methods_and_traits",
+    "nested_arrays", "smart_pointers",
     "snake_game",
 ]

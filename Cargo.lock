@@ -1761,6 +1761,10 @@ dependencies = [
 ]
 
 [[package]]
+name = "generics"
+version = "0.1.0"
+
+[[package]]
 name = "gethostname"
 version = "0.4.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -2303,6 +2307,10 @@ name = "memchr"
 version = "2.7.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "6c8640c5d730cb13ebd907d8d04b52f55ac9a2eec55b440c8892f40d56c76c1d"
+
+[[package]]
+name = "memory_management"
+version = "0.1.0"
 
 [[package]]
 name = "metal"
@@ -3069,6 +3077,10 @@ checksum = "3c5e1a9a646d36c3599cd173a41282daf47c44583ad367b8e6837255952e5c67"
 dependencies = [
  "serde",
 ]
+
+[[package]]
+name = "smart_pointers"
+version = "0.1.0"
 
 [[package]]
 name = "smol_str"
